@@ -1,4 +1,6 @@
 const router = require("express").Router();
+//const dataPath = "./data/phones.json";
+const fs = require("fs");
 const dataPath = "./data/phones.json";
 
 router.get("/", (req, res, next) => {
@@ -6,9 +8,9 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/phones", async (req, res, next) => {
-  fs.readFile(__dirname + "/" + dataPath, "utf8", function (err, data) {
+  fs.readFile(dataPath, "utf8", function (err, data) {
     console.log(data);
-    res.send(data);
+    res.end(data);
   });
 
   // res.json(phones);
